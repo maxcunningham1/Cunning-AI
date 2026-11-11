@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Bebas_Neue, Space_Mono } from 'next/font/google'
+import { Bebas_Neue, Nunito, Inter } from 'next/font/google'
+import Nav from '@/components/Nav'
 import './globals.css'
 
 const bebasNeue = Bebas_Neue({
@@ -9,22 +10,40 @@ const bebasNeue = Bebas_Neue({
   display: 'swap',
 })
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const nunito = Nunito({
+  weight: '900',
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-nunito',
+  display: 'swap',
+})
+
+const inter = Inter({
+  weight: ['300', '400', '500'],
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'CAI — Cunning AI',
+  metadataBase: new URL('https://cunning-ai.com'),
+  title: 'Cunning AI · Implementation & Consultancy, London',
   description:
-    'CAI is an AI consultancy founded by Max Cunningham. We build AI strategies and tools for businesses that want to move fast.',
-  keywords: ['AI consultancy', 'AI strategy', 'digital transformation', 'tool development', 'Max Cunningham'],
+    'Cunning AI helps businesses turn AI\'s potential into results. We identify where AI can save your team time, improve processes and unlock new efficiencies.',
+  keywords: ['Cunning AI', 'AI consultancy', 'AI implementation', 'London', 'Max Cunningham', 'digital transformation'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'CAI — Cunning AI',
-    description: 'AI strategies and tools for businesses that want to move fast.',
+    title: 'Cunning AI · Implementation & Consultancy, London',
+    description: 'Cunning AI helps businesses turn AI\'s potential into results. We identify where AI can save your team time, improve processes and unlock new efficiencies.',
+    url: 'https://cunning-ai.com',
+    siteName: 'Cunning AI',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Cunning AI · Implementation & Consultancy, London',
+    description: 'Cunning AI helps businesses turn AI\'s potential into results. We identify where AI can save your team time, improve processes and unlock new efficiencies.',
   },
 }
 
@@ -33,9 +52,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Cunning AI',
+    legalName: 'Cunning AI Ltd',
+    url: 'https://cunning-ai.com',
+    areaServed: 'London',
+  }
+
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${spaceMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${bebasNeue.variable} ${inter.variable} ${nunito.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body>
+        <Nav />
+        {children}
+      </body>
     </html>
   )
 }

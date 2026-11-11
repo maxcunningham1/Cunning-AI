@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Cursor from '@/components/Cursor'
 
 // ─── Shared animation ─────────────────────────────────────────────────────────
 
@@ -45,12 +44,26 @@ function Fade({ children, style }: { children: React.ReactNode; style?: React.CS
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
+const paintings = [
+  '/artworks/SK-A-4688.jpg',
+  '/artworks/SK-A-5003.jpg',
+  '/artworks/image.jpg',
+  '/artworks/painting.jpg',
+  '/artworks/SK-A-154.jpg',
+]
+
 function Hero() {
   const [loaded, setLoaded] = useState(false)
+  const [current, setCurrent] = useState(0)
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 80)
     return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setCurrent(i => (i + 1) % paintings.length), 6000)
+    return () => clearInterval(id)
   }, [])
 
   return (
@@ -63,73 +76,63 @@ function Hero() {
         backgroundColor: '#000',
       }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/image.jpg"
-        alt=""
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          display: 'block',
-        }}
-      />
+      {paintings.map((src, i) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+            opacity: i === current ? 1 : 0,
+            transition: 'opacity 2.5s ease-in-out',
+          }}
+        />
+      ))}
 
-      {/* Overlay */}
+      {/* Overlay — heavier to ensure logo legibility across all paintings */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.40)',
+          backgroundColor: 'rgba(0,0,0,0.52)',
         }}
       />
 
-      {/* Text */}
+      {/* Logo + wordmark — upper centre */}
       <div
         style={{
           position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '1.25rem',
+          top: '10%',
+          left: 0,
+          right: 0,
+          textAlign: 'center',
           opacity: loaded ? 1 : 0,
           transition: 'opacity 1.4s ease',
+          userSelect: 'none',
         }}
       >
-        <h1
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo.png"
+          alt=""
+          aria-hidden="true"
           style={{
-            fontFamily: 'var(--font-bebas)',
-            fontSize: 'clamp(3.5rem, 7vw, 9rem)',
-            fontWeight: 700,
-            lineHeight: 1,
-            letterSpacing: '0.04em',
-            color: '#f5f2ee',
-            userSelect: 'none',
-            margin: 0,
+            display: 'block',
+            margin: '0 auto',
+            height: 'clamp(55px, 6vw, 85px)',
+            width: 'auto',
+            filter: 'invert(1) sepia(0.5) brightness(0.8)',
+            opacity: 0.55,
           }}
-        >
-          C-AI
-        </h1>
-        <p
-          style={{
-            fontFamily: 'var(--font-space-mono)',
-            fontSize: 'clamp(0.65rem, 1vw, 1rem)',
-            fontWeight: 400,
-            letterSpacing: '0.35em',
-            color: 'rgba(245,242,238,0.65)',
-            textTransform: 'uppercase',
-            margin: 0,
-            userSelect: 'none',
-          }}
-        >
-          The quiet advantage.
-        </p>
+        />
       </div>
     </section>
   )
@@ -142,87 +145,153 @@ function About() {
     <section
       style={{
         backgroundColor: '#080808',
-        padding: '10rem 6vw 10rem',
+        padding: '5rem 6vw 7rem',
         borderTop: '1px solid #161616',
       }}
     >
       <Reveal>
-        <div
-          style={{
-            maxWidth: '960px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 2fr',
-            gap: '4rem',
-            alignItems: 'start',
-          }}
-          className="about-grid"
-        >
-          {/* Left — byline */}
+        <div>
+          {/* Full-width heading */}
           <Fade>
-            <div>
-              <p
-                style={{
-                  fontFamily: 'var(--font-space-mono)',
-                  fontSize: '10px',
-                  letterSpacing: '0.3em',
-                  color: 'rgba(245,242,238,0.35)',
-                  textTransform: 'uppercase',
-                  marginBottom: '0.6rem',
-                }}
-              >
-                Founder
-              </p>
-              <p
-                style={{
-                  fontFamily: 'var(--font-space-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.2em',
-                  color: 'rgba(245,242,238,0.55)',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Max Cunningham
-              </p>
-            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-bebas)',
+                fontSize: 'clamp(1.8rem, 3vw, 5rem)',
+                fontWeight: 700,
+                lineHeight: 1.05,
+                letterSpacing: '0.02em',
+                color: '#f5f2ee',
+                textAlign: 'center',
+                marginBottom: '3rem',
+              }}
+            >
+              You don&apos;t need another AI tool.
+            </h2>
           </Fade>
 
-          {/* Right — copy */}
-          <Fade>
-            <div>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-bebas)',
-                  fontSize: 'clamp(2.2rem, 4vw, 4.5rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.05,
-                  letterSpacing: '0.02em',
-                  color: '#f5f2ee',
-                  marginBottom: '2rem',
-                }}
-              >
-                Streamlining business
-                <br />
-                through AI.
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'var(--font-space-mono)',
-                  fontSize: '12.5px',
-                  lineHeight: 1.95,
-                  color: 'rgba(245,242,238,0.6)',
-                  letterSpacing: '0.02em',
-                  maxWidth: '52ch',
-                }}
-              >
-                C-AI works with organisations navigating the shift to intelligent
-                systems. Drawing on deep expertise in digital transformation,
-                we identify where AI creates genuine leverage — then build the
-                tools and strategies to get there. Fast, considered, and without
-                the noise.
-              </p>
-            </div>
-          </Fade>
+          {/* Two-column: byline + body */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 2fr',
+              gap: '4rem',
+              alignItems: 'start',
+              maxWidth: '960px',
+              margin: '0 auto',
+            }}
+            className="about-grid"
+          >
+            <Fade>
+              <div>
+                {/* Headshot */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/max.webp"
+                    alt="Max Cunningham"
+                    style={{
+                      width: '100%',
+                      maxWidth: '260px',
+                      aspectRatio: '3 / 4',
+                      objectFit: 'cover',
+                      objectPosition: 'center 45%',
+                      display: 'block',
+                      margin: '0 auto',
+                      filter: 'grayscale(100%)',
+                    }}
+                  />
+                </div>
+
+                <div style={{ maxWidth: '260px', margin: '0 auto' }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '14px',
+                    letterSpacing: '0.05em',
+                    color: 'rgba(245,242,238,0.7)',
+                    textTransform: 'uppercase',
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  Max Cunningham
+                </p>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/max-cunningham-94305163"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    opacity: 0.45,
+                    transition: 'opacity 0.2s ease',
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+                  onMouseLeave={e => (e.currentTarget.style.opacity = '0.45')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(245,242,238,0.9)">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  <span style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '10px',
+                    letterSpacing: '0.05em',
+                    color: 'rgba(245,242,238,0.7)',
+                    textTransform: 'uppercase',
+                  }}>
+                    LinkedIn
+                  </span>
+                </a>
+                </div>
+              </div>
+            </Fade>
+
+            <Fade>
+              <div>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '14px',
+                    lineHeight: 1.95,
+                    color: 'rgba(245,242,238,0.85)',
+                    letterSpacing: '0.02em',
+                    maxWidth: '52ch',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  Not because the AI is bad. Because nobody took the time to understand the problem first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '14px',
+                    lineHeight: 1.95,
+                    color: 'rgba(245,242,238,0.6)',
+                    letterSpacing: '0.02em',
+                    maxWidth: '52ch',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  Cunning AI was built around a different approach. We start with your team, not a product catalogue. We map how people actually work, find where time gets wasted, and design solutions that fit the way your business already operates. Then we build them.
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '14px',
+                    lineHeight: 1.95,
+                    color: 'rgba(245,242,238,0.6)',
+                    letterSpacing: '0.02em',
+                    maxWidth: '52ch',
+                  }}
+                >
+                  The result is tools that people actually use. Because they were built for the problems people actually have.
+                </p>
+              </div>
+            </Fade>
+          </div>
         </div>
       </Reveal>
     </section>
@@ -243,11 +312,28 @@ function Contact() {
     >
       <Reveal>
         <Fade>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              display: 'block',
+              margin: '0 auto 4rem',
+              height: 'clamp(200px, 25vw, 340px)',
+              width: 'auto',
+              filter: 'invert(1) sepia(0.5) brightness(0.8)',
+              opacity: 0.45,
+            }}
+          />
+        </Fade>
+
+        <Fade>
           <p
             style={{
-              fontFamily: 'var(--font-space-mono)',
-              fontSize: '10px',
-              letterSpacing: '0.35em',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              letterSpacing: '0.01em',
               color: 'rgba(245,242,238,0.3)',
               textTransform: 'uppercase',
               marginBottom: '2.5rem',
@@ -281,17 +367,44 @@ function Contact() {
   )
 }
 
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+function Footer() {
+  return (
+    <footer
+      style={{
+        backgroundColor: '#080808',
+        borderTop: '1px solid #161616',
+        padding: '2rem 6vw',
+        textAlign: 'center',
+      }}
+    >
+      <p
+        style={{
+          fontFamily: 'var(--font-inter)',
+          fontSize: '10px',
+          letterSpacing: '0.03em',
+          color: 'rgba(245,242,238,0.2)',
+          textTransform: 'uppercase',
+        }}
+      >
+        Cunning AI Ltd &nbsp;·&nbsp; Company No. 17561322
+      </p>
+    </footer>
+  )
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
   return (
     <>
-      <Cursor />
       <main>
         <Hero />
         <About />
         <Contact />
       </main>
+      <Footer />
     </>
   )
 }

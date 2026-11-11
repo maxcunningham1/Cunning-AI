@@ -8,7 +8,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none !important;
 }
 
 html {
@@ -23,14 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Restore cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-  *,
-  *::before,
-  *::after {
-    cursor: auto !important;
-  }
-}
 
 /* Contact link hover */
 .contact-email:hover {
@@ -43,4 +34,88 @@ body {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
   }
+}
+
+/* Work page — process grid: 2 cols on tablet, 1 col on mobile */
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Work page — tool rows: stack on mobile */
+@media (max-width: 680px) {
+  .tool-row {
+    grid-template-columns: 1fr !important;
+  }
+  .tool-row > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid #161616;
+  }
+}
+
+/* Work page CTA — stack on mobile */
+@media (max-width: 600px) {
+  .work-cta {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: flex-start !important;
+  }
+  .work-cta a {
+    margin-left: 0 !important;
+  }
+}
+
+/* Services page — step layout: stack number on mobile */
+@media (max-width: 600px) {
+  .service-step {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Services / Use Cases CTA — stack on mobile */
+@media (max-width: 600px) {
+  .services-cta,
+  .usecases-cta,
+  .about-cta {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: flex-start !important;
+  }
+  .services-cta a,
+  .usecases-cta a,
+  .about-cta a {
+    margin-left: 0 !important;
+  }
+}
+
+/* Use cases — stack on mobile */
+@media (max-width: 600px) {
+  .case-row {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* About — beliefs grid: 1 col on mobile */
+@media (max-width: 680px) {
+  .beliefs-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Nav: show desktop links, hide hamburger */
+.nav-desktop { display: flex !important; }
+.nav-hamburger { display: none !important; }
+
+@media (max-width: 720px) {
+  .nav-desktop { display: none !important; }
+  .nav-hamburger { display: flex !important; }
 }
