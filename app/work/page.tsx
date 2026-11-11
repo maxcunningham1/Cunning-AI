@@ -62,7 +62,7 @@ export default function Work() {
         style={{
           position: 'relative',
           backgroundColor: '#080808',
-          padding: '7rem 6vw 6rem 3vw',
+          padding: '7rem 6vw 6rem',
           borderBottom: '1px solid #161616',
           overflow: 'hidden',
         }}
@@ -88,22 +88,9 @@ export default function Work() {
         <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(8,8,8,0.45)' }} />
 
         <Reveal>
-          <div style={{ maxWidth: '880px', margin: '0', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
             <Fade>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/bramble-logo.png"
-                  alt="Bramble Partners"
-                  style={{
-                    height: 'clamp(2.8rem, 5.5vw, 6.5rem)',
-                    width: 'auto',
-                    opacity: 0.85,
-                    flexShrink: 0,
-                    display: 'block',
-                    transform: 'translateY(-4px)',
-                  }}
-                />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                 <h1
                   style={{
                     fontFamily: 'var(--font-bebas)',
@@ -117,6 +104,19 @@ export default function Work() {
                 >
                   Bramble Partners
                 </h1>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/bramble-logo.png"
+                  alt="Bramble Partners"
+                  style={{
+                    height: 'clamp(3rem, 5vw, 6rem)',
+                    width: 'auto',
+                    opacity: 0.85,
+                    display: 'block',
+                    flexShrink: 0,
+                    transform: 'translateY(-3px)',
+                  }}
+                />
               </div>
             </Fade>
 
@@ -161,7 +161,7 @@ export default function Work() {
           padding: '6rem 6vw 8rem',
         }}
       >
-        <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '880px', margin: '0 auto', paddingLeft: '0' }}>
           <Reveal>
             <Fade>
               <p

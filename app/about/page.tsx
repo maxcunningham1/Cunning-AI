@@ -58,7 +58,7 @@ export default function About() {
             letterSpacing: '0.02em',
             color: '#f5f2ee',
           }}>
-            Most AI implementations fail for the same reason.
+            There is no shortage of AI tools. Most never get properly implemented.
           </h1>
         </motion.div>
       </section>
@@ -103,15 +103,6 @@ export default function About() {
                 marginBottom: '0.5rem',
               }}>
                 Max Cunningham
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                letterSpacing: '0.02em',
-                color: 'rgba(245,242,238,0.25)',
-                marginBottom: '1.5rem',
-              }}>
-                Founder, Cunning AI
               </p>
               <a
                 href="https://www.linkedin.com/in/max-cunningham-94305163"
