@@ -113,7 +113,7 @@ export default function RootLayout({
         <Nav />
         {children}
       </body>
-      <GoogleTagManager gtmId="GTM-MT76KR47" />
+      <GoogleTagManager gtmId="GTM-K5MQ4CFG" />
     </html>
   )
 }
