@@ -83,48 +83,6 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* The reason */}
-      <section style={{
-        backgroundColor: '#080808',
-        padding: '4rem 6vw 5rem',
-        borderBottom: '1px solid #161616',
-        textAlign: 'center',
-      }}>
-        <FadeIn>
-          <div style={{ maxWidth: '54ch', margin: '0 auto' }}>
-            <p style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              lineHeight: 1.95,
-              color: 'rgba(245,242,238,0.75)',
-              letterSpacing: '0.01em',
-              marginBottom: '1.5rem',
-            }}>
-              Most AI projects fail not because the technology is wrong, but because nobody took the time to understand the business first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
-            </p>
-            <p style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              lineHeight: 1.95,
-              color: 'rgba(245,242,238,0.5)',
-              letterSpacing: '0.01em',
-              marginBottom: '1.5rem',
-            }}>
-              Cunning AI was built around a different approach. We start with your team, not a product catalogue. We map how people actually work, find where time gets wasted, and design solutions that fit the way your business already operates. Then we build them.
-            </p>
-            <p style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              lineHeight: 1.95,
-              color: 'rgba(245,242,238,0.5)',
-              letterSpacing: '0.01em',
-            }}>
-              The result is tools that people actually use. Because they were built for the problems people actually have.
-            </p>
-          </div>
-        </FadeIn>
-      </section>
-
       {/* Three beliefs */}
       <section style={{
         backgroundColor: '#080808',
