@@ -113,7 +113,7 @@ export default function RootLayout({
             --primaryColor: #AFE3FF;
             --backgroundColor: #070219;
             --textColor: #E5F6FA;
-            --backdropBackgroundColor: #00000099;
+            --backdropBackgroundColor: #00000080;
             --backdropBackgroundBlur: 0px;
             --iconColor: #AFE3FF;
             --iconBackgroundColor: #070219;
@@ -136,19 +136,23 @@ export default function RootLayout({
               window.silktideConsentManager.init({
                 backdrop: { show: true },
                 icon: { position: "bottomRight" },
-                prompt: { position: "center" },
+                prompt: { position: "bottomRight" },
                 consentTypes: [
                   {
                     id: "essential",
                     label: "Essential",
                     description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
-                    required: true
+                    required: true,
+                    onAccept: function() {
+                      console.log("Add logic for the required Essential consent type here");
+                    }
                   },
                   {
                     id: "analytics",
                     label: "Analytics",
                     description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
                     required: false,
+                    defaultValue: true,
                     gtag: "analytics_storage"
                   },
                   {
