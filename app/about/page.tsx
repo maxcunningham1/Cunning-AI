@@ -93,10 +93,11 @@ export default function About() {
           <FadeIn>
             <p style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              letterSpacing: '0.05em',
-              color: 'rgba(245,242,238,0.2)',
+              fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+              letterSpacing: '0.03em',
+              color: 'rgba(245,242,238,0.5)',
               marginBottom: '3rem',
+              fontWeight: 500,
             }}>
               How we think
             </p>
