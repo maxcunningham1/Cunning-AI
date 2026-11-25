@@ -78,7 +78,7 @@ export default function About() {
             letterSpacing: '0.02em',
             color: '#f5f2ee',
           }}>
-            Bespoke AI built around your business. Not another tool. A real outcome.
+            Tailored AI built around your business. Not another tool.
           </h1>
         </motion.div>
       </section>
