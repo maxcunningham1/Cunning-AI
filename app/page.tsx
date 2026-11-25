@@ -302,34 +302,36 @@ function About() {
                 >
                   The result is tools that people actually use. Because they were built for the problems people actually have.
                 </p>
-                <a
-                  href="/contact"
-                  className="contact-email"
-                  style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    letterSpacing: '0.02em',
-                    color: 'rgba(245,242,238,0.85)',
-                    textDecoration: 'none',
-                    backgroundColor: 'transparent',
-                    border: '1px solid rgba(245,242,238,0.25)',
-                    borderRadius: '100px',
-                    padding: '10px 32px',
-                    display: 'inline-block',
-                    transition: 'border-color 0.2s, color 0.2s',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.5)'
-                    ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,1)'
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.25)'
-                    ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,0.85)'
-                  }}
-                >
-                  Get in touch
-                </a>
+                <div style={{ textAlign: 'center' }}>
+                  <a
+                    href="/contact"
+                    className="contact-email"
+                    style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      letterSpacing: '0.02em',
+                      color: 'rgba(245,242,238,0.85)',
+                      textDecoration: 'none',
+                      backgroundColor: 'transparent',
+                      border: '1px solid rgba(245,242,238,0.25)',
+                      borderRadius: '100px',
+                      padding: '10px 32px',
+                      display: 'inline-block',
+                      transition: 'border-color 0.2s, color 0.2s',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.5)'
+                      ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,1)'
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.25)'
+                      ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,0.85)'
+                    }}
+                  >
+                    Get in touch
+                  </a>
+                </div>
               </div>
             </Fade>
           </div>
