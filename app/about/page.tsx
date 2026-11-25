@@ -78,7 +78,7 @@ export default function About() {
             letterSpacing: '0.02em',
             color: '#f5f2ee',
           }}>
-            &lsquo;There is no shortage of AI tools. Most never get properly implemented.&rsquo;
+            Bespoke AI built around your business. Not another tool — a real outcome.
           </h1>
         </motion.div>
       </section>
@@ -100,7 +100,7 @@ export default function About() {
               letterSpacing: '0.01em',
               marginBottom: '1.5rem',
             }}>
-              Not because the AI is bad. Because nobody took the time to understand the problem first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
+              Most AI projects fail not because the technology is wrong, but because nobody took the time to understand the business first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
             </p>
             <p style={{
               fontFamily: 'var(--font-inter)',
