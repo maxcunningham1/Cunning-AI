@@ -91,17 +91,15 @@ export default function About() {
       }}>
         <div style={{ maxWidth: '880px', margin: '0 auto' }}>
           <FadeIn>
-            <h2 style={{
-              fontFamily: 'var(--font-bebas)',
-              fontSize: 'clamp(3rem, 7vw, 8rem)',
-              fontWeight: 700,
-              lineHeight: 1.0,
-              letterSpacing: '0.02em',
-              color: '#f5f2ee',
-              marginBottom: '4rem',
+            <p style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              letterSpacing: '0.05em',
+              color: 'rgba(245,242,238,0.2)',
+              marginBottom: '3rem',
             }}>
               How we think
-            </h2>
+            </p>
           </FadeIn>
 
           <div style={{
@@ -126,22 +124,22 @@ export default function About() {
               <FadeIn key={belief.heading} delay={i * 0.08}>
                 <div style={{
                   borderTop: '1px solid #161616',
-                  padding: '2.5rem 2rem 2.5rem 0',
+                  padding: '2rem 0 2rem',
+                  paddingRight: '2rem',
                 }}>
                   <p style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: '13px',
+                    fontSize: '11.5px',
                     lineHeight: 1.5,
-                    color: 'rgba(245,242,238,0.85)',
+                    color: 'rgba(245,242,238,0.8)',
                     letterSpacing: '0.02em',
                     marginBottom: '1rem',
-                    fontWeight: 600,
                   }}>
                     {belief.heading}
                   </p>
                   <p style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: '13px',
+                    fontSize: '11.5px',
                     lineHeight: 1.85,
                     color: 'rgba(245,242,238,0.4)',
                     letterSpacing: '0.01em',
