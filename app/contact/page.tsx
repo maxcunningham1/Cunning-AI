@@ -99,6 +99,10 @@ export default function Contact() {
                 <input id="name" name="name" type="text" required autoComplete="name" style={inputStyle} />
               </div>
               <div>
+                <label htmlFor="email" style={labelStyle}>Email *</label>
+                <input id="email" name="email" type="email" required autoComplete="email" style={inputStyle} />
+              </div>
+              <div>
                 <label htmlFor="company" style={labelStyle}>Company</label>
                 <input id="company" name="company" type="text" autoComplete="organization" style={inputStyle} />
               </div>
