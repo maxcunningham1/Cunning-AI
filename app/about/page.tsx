@@ -130,17 +130,18 @@ export default function About() {
                 }}>
                   <p style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: '11.5px',
+                    fontSize: '14px',
                     lineHeight: 1.5,
                     color: 'rgba(245,242,238,0.8)',
                     letterSpacing: '0.02em',
                     marginBottom: '1rem',
+                    fontWeight: 600,
                   }}>
                     {belief.heading}
                   </p>
                   <p style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: '11.5px',
+                    fontSize: '14px',
                     lineHeight: 1.85,
                     color: 'rgba(245,242,238,0.4)',
                     letterSpacing: '0.01em',
