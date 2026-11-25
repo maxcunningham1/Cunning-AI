@@ -118,4 +118,14 @@ body {
 @media (max-width: 720px) {
   .nav-desktop { display: none !important; }
   .nav-hamburger { display: flex !important; }
+
+  /* Compact pill on mobile — even gap between all items */
+  .nav-pill {
+    gap: 0.5rem !important;
+    padding-left: 14px !important;
+    padding-right: 6px !important;
+  }
+  .nav-logo {
+    margin-right: 0 !important;
+  }
 }

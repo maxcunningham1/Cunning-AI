@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { trackEmailClick } from '@/lib/gtm'
 
 const steps = [
   {
@@ -116,13 +117,11 @@ function Step({ step, index }: { step: typeof steps[0]; index: number }) {
 export default function Services() {
   return (
     <>
-      <div style={{ height: '56px' }} />
-
       {/* Intro */}
       <section style={{
         position: 'relative',
         backgroundColor: '#080808',
-        padding: '7rem 6vw 5rem',
+        padding: 'calc(56px + 7rem) 6vw 5rem',
         borderBottom: '1px solid #161616',
         overflow: 'hidden',
       }}>
@@ -197,7 +196,7 @@ export default function Services() {
           }}>
             Most projects start with a conversation about what you are trying to solve. No commitment required.
           </p>
-          <a href="mailto:max@cunning-ai.com" style={{
+          <a href="mailto:max@cunning-ai.com" onClick={() => trackEmailClick()} style={{
             fontFamily: 'var(--font-inter)',
             fontSize: '14px',
             letterSpacing: '0.05em',

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { trackEmailClick } from '@/lib/gtm'
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -35,20 +36,39 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export default function About() {
   return (
     <>
-      <div style={{ height: '56px' }} />
-
       {/* Opening statement */}
       <section style={{
+        position: 'relative',
         backgroundColor: '#080808',
-        padding: '4rem 6vw 4rem',
+        padding: 'calc(56px + 7rem) 6vw 6rem',
         borderBottom: '1px solid #161616',
         textAlign: 'center',
+        overflow: 'hidden',
       }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/artworks/sunset.jpg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            opacity: 0.5,
+            filter: 'grayscale(10%)',
+            transform: 'scale(1.12)',
+            transformOrigin: 'center center',
+          }}
+        />
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(8,8,8,0.45)' }} />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          style={{ maxWidth: '780px', margin: '0 auto' }}
+          style={{ maxWidth: '780px', margin: '0 auto', position: 'relative', zIndex: 1 }}
         >
           <h1 style={{
             fontFamily: 'var(--font-bebas)',
@@ -58,120 +78,51 @@ export default function About() {
             letterSpacing: '0.02em',
             color: '#f5f2ee',
           }}>
-            There is no shortage of AI tools. Most never get properly implemented.
+            &lsquo;There is no shortage of AI tools. Most never get properly implemented.&rsquo;
           </h1>
         </motion.div>
       </section>
 
-      {/* The reason + Max intro */}
+      {/* The reason */}
       <section style={{
         backgroundColor: '#080808',
         padding: '4rem 6vw 5rem',
         borderBottom: '1px solid #161616',
+        textAlign: 'center',
       }}>
-        <div style={{
-          maxWidth: '880px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.5fr',
-          gap: '5rem',
-          alignItems: 'start',
-        }} className="about-grid">
-          {/* Left: photo */}
-          <FadeIn>
-            <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/max.webp"
-                alt="Max Cunningham"
-                style={{
-                  width: '100%',
-                  maxWidth: '280px',
-                  aspectRatio: '3 / 4',
-                  objectFit: 'cover',
-                  objectPosition: 'center 45%',
-                  display: 'block',
-                  filter: 'grayscale(100%)',
-                  marginBottom: '1.5rem',
-                }}
-              />
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                letterSpacing: '0.04em',
-                color: 'rgba(245,242,238,0.5)',
-                marginBottom: '0.5rem',
-              }}>
-                Max Cunningham
-              </p>
-              <a
-                href="https://www.linkedin.com/in/max-cunningham-94305163"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  opacity: 0.35,
-                  transition: 'opacity 0.2s ease',
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = '0.8')}
-                onMouseLeave={e => (e.currentTarget.style.opacity = '0.35')}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(245,242,238,0.9)">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '10px',
-                  letterSpacing: '0.04em',
-                  color: 'rgba(245,242,238,0.7)',
-                }}>
-                  LinkedIn
-                </span>
-              </a>
-            </div>
-          </FadeIn>
-
-          {/* Right: story */}
-          <FadeIn delay={0.1}>
-            <div>
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                lineHeight: 1.95,
-                color: 'rgba(245,242,238,0.75)',
-                letterSpacing: '0.01em',
-                maxWidth: '52ch',
-                marginBottom: '1.5rem',
-              }}>
-                Not because the AI is bad. Because nobody took the time to understand the problem first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                lineHeight: 1.95,
-                color: 'rgba(245,242,238,0.5)',
-                letterSpacing: '0.01em',
-                maxWidth: '52ch',
-                marginBottom: '1.5rem',
-              }}>
-                Cunning AI was built around a different approach. We start with your team, not a product catalogue. We map how people actually work, find where time gets wasted, and design solutions that fit the way your business already operates. Then we build them.
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                lineHeight: 1.95,
-                color: 'rgba(245,242,238,0.5)',
-                letterSpacing: '0.01em',
-                maxWidth: '52ch',
-              }}>
-                The result is tools that people actually use. Because they were built for the problems people actually have.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
+        <FadeIn>
+          <div style={{ maxWidth: '54ch', margin: '0 auto' }}>
+            <p style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              lineHeight: 1.95,
+              color: 'rgba(245,242,238,0.75)',
+              letterSpacing: '0.01em',
+              marginBottom: '1.5rem',
+            }}>
+              Not because the AI is bad. Because nobody took the time to understand the problem first. A tool gets purchased, a pilot gets run, and six months later it is used by two people and ignored by everyone else.
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              lineHeight: 1.95,
+              color: 'rgba(245,242,238,0.5)',
+              letterSpacing: '0.01em',
+              marginBottom: '1.5rem',
+            }}>
+              Cunning AI was built around a different approach. We start with your team, not a product catalogue. We map how people actually work, find where time gets wasted, and design solutions that fit the way your business already operates. Then we build them.
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              lineHeight: 1.95,
+              color: 'rgba(245,242,238,0.5)',
+              letterSpacing: '0.01em',
+            }}>
+              The result is tools that people actually use. Because they were built for the problems people actually have.
+            </p>
+          </div>
+        </FadeIn>
       </section>
 
       {/* Three beliefs */}
@@ -266,7 +217,7 @@ export default function About() {
           }}>
             If that sounds like the right way to approach it, let&apos;s talk.
           </p>
-          <a href="mailto:max@cunning-ai.com" style={{
+          <a href="mailto:max@cunning-ai.com" onClick={() => trackEmailClick()} style={{
             fontFamily: 'var(--font-inter)',
             fontSize: '14px',
             letterSpacing: '0.05em',

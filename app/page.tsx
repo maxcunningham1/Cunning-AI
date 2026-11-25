@@ -329,37 +329,33 @@ function Contact() {
         </Fade>
 
         <Fade>
-          <p
+          <a
+            href="/contact"
+            className="contact-email"
             style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              letterSpacing: '0.01em',
-              color: 'rgba(245,242,238,0.3)',
-              textTransform: 'uppercase',
-              marginBottom: '2.5rem',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.02em',
+              color: 'rgba(245,242,238,0.85)',
+              textDecoration: 'none',
+              backgroundColor: 'transparent',
+              border: '1px solid rgba(245,242,238,0.25)',
+              borderRadius: '100px',
+              padding: '10px 32px',
+              display: 'inline-block',
+              transition: 'border-color 0.2s, color 0.2s',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.5)'
+              ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,1)'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.25)'
+              ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,0.85)'
             }}
           >
             Get in touch
-          </p>
-        </Fade>
-
-        <Fade>
-          <a
-            href="mailto:max@cunning-ai.com"
-            className="contact-email"
-            style={{
-              fontFamily: 'var(--font-bebas)',
-              fontSize: 'clamp(2rem, 5.5vw, 7rem)',
-              fontWeight: 700,
-              letterSpacing: '0.03em',
-              color: '#f5f2ee',
-              textDecoration: 'none',
-              display: 'inline-block',
-              opacity: 0.85,
-              transition: 'opacity 0.3s ease',
-            }}
-          >
-            max@cunning-ai.com
           </a>
         </Fade>
       </Reveal>
