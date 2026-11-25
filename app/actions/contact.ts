@@ -5,6 +5,7 @@ import { Resend } from 'resend'
 export async function submitContact(formData: FormData) {
   const name    = (formData.get('name')    as string | null)?.trim()
   const email   = (formData.get('email')   as string | null)?.trim()
+  const phone   = (formData.get('phone')   as string | null)?.trim()
   const company = (formData.get('company') as string | null)?.trim()
   const message = (formData.get('message') as string | null)?.trim()
 
@@ -19,7 +20,7 @@ export async function submitContact(formData: FormData) {
       to: 'max@cunning-ai.com',
       replyTo: email,
       subject: `New enquiry from ${name}${company ? ` · ${company}` : ''}`,
-      text: [`Name: ${name}`, `Email: ${email}`, `Company: ${company || '—'}`, '', message].join('\n'),
+      text: [`Name: ${name}`, `Email: ${email}`, `Phone: ${phone || '—'}`, `Company: ${company || '—'}`, '', message].join('\n'),
     })
     return { success: true, error: undefined }
   } catch {

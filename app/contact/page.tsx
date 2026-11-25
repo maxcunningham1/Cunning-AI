@@ -103,6 +103,10 @@ export default function Contact() {
                 <input id="email" name="email" type="email" required autoComplete="email" style={inputStyle} />
               </div>
               <div>
+                <label htmlFor="phone" style={labelStyle}>Phone</label>
+                <input id="phone" name="phone" type="tel" autoComplete="tel" style={inputStyle} />
+              </div>
+              <div>
                 <label htmlFor="company" style={labelStyle}>Company</label>
                 <input id="company" name="company" type="text" autoComplete="organization" style={inputStyle} />
               </div>
