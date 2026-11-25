@@ -28,24 +28,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cunning-ai.com'),
-  title: 'Cunning AI · AI Implementation Consultant, London',
+  title: 'Cunning AI · AI Implementation Consultancy, London',
   description:
-    'Cunning AI is a London-based AI implementation consultant. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
-  keywords: ['AI implementation consultant London', 'AI consultancy London', 'AI implementation', 'AI consultant', 'London', 'Max Cunningham'],
+    'Cunning AI is a London-based AI implementation consultancy. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
+  keywords: ['AI implementation consultancy London', 'AI consultancy London', 'AI implementation', 'AI consultant', 'London', 'Max Cunningham'],
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Cunning AI · AI Implementation Consultant, London',
-    description: 'Cunning AI is a London-based AI implementation consultant. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
+    title: 'Cunning AI · AI Implementation Consultancy, London',
+    description: 'Cunning AI is a London-based AI implementation consultancy. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
     url: 'https://cunning-ai.com',
     siteName: 'Cunning AI',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Cunning AI · AI Implementation Consultant, London',
-    description: 'Cunning AI is a London-based AI implementation consultant. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
+    title: 'Cunning AI · AI Implementation Consultancy, London',
+    description: 'Cunning AI is a London-based AI implementation consultancy. We identify where AI can save your team time, build it into your workflow, and make sure it actually gets used.',
   },
 }
 
