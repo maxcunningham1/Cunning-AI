@@ -210,10 +210,22 @@ function About() {
                     letterSpacing: '0.05em',
                     color: 'rgba(245,242,238,0.7)',
                     textTransform: 'uppercase',
-                    marginBottom: '1.25rem',
+                    marginBottom: '0.25rem',
                   }}
                 >
                   Max Cunningham
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '11px',
+                    letterSpacing: '0.05em',
+                    color: 'rgba(245,242,238,0.35)',
+                    textTransform: 'uppercase',
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  Founder
                 </p>
 
                 {/* LinkedIn */}
@@ -285,10 +297,39 @@ function About() {
                     color: 'rgba(245,242,238,0.6)',
                     letterSpacing: '0.02em',
                     maxWidth: '52ch',
+                    marginBottom: '2.5rem',
                   }}
                 >
                   The result is tools that people actually use. Because they were built for the problems people actually have.
                 </p>
+                <a
+                  href="/contact"
+                  className="contact-email"
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    letterSpacing: '0.02em',
+                    color: 'rgba(245,242,238,0.85)',
+                    textDecoration: 'none',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(245,242,238,0.25)',
+                    borderRadius: '100px',
+                    padding: '10px 32px',
+                    display: 'inline-block',
+                    transition: 'border-color 0.2s, color 0.2s',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.5)'
+                    ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,1)'
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.25)'
+                    ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,0.85)'
+                  }}
+                >
+                  Get in touch
+                </a>
               </div>
             </Fade>
           </div>
@@ -319,44 +360,13 @@ function Contact() {
             aria-hidden="true"
             style={{
               display: 'block',
-              margin: '0 auto 4rem',
+              margin: '0 auto',
               height: 'clamp(200px, 25vw, 340px)',
               width: 'auto',
               filter: 'invert(1) sepia(0.5) brightness(0.8)',
               opacity: 0.45,
             }}
           />
-        </Fade>
-
-        <Fade>
-          <a
-            href="/contact"
-            className="contact-email"
-            style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '13px',
-              fontWeight: 600,
-              letterSpacing: '0.02em',
-              color: 'rgba(245,242,238,0.85)',
-              textDecoration: 'none',
-              backgroundColor: 'transparent',
-              border: '1px solid rgba(245,242,238,0.25)',
-              borderRadius: '100px',
-              padding: '10px 32px',
-              display: 'inline-block',
-              transition: 'border-color 0.2s, color 0.2s',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.5)'
-              ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,1)'
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,242,238,0.25)'
-              ;(e.currentTarget as HTMLElement).style.color = 'rgba(245,242,238,0.85)'
-            }}
-          >
-            Get in touch
-          </a>
         </Fade>
       </Reveal>
     </section>
