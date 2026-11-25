@@ -79,33 +79,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Consent Mode v2 defaults — must run before GTM */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                ad_storage: 'denied',
-                ad_user_data: 'denied',
-                ad_personalization: 'denied',
-                analytics_storage: 'denied',
-                wait_for_update: 500,
-                region: ['GB','AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE']
-              });
-            `,
-          }}
-        />
-        {/*
-          CookieYes — replace YOUR_SITE_ID below with your actual script URL from cookieyes.com
-          Setup steps:
-            1. Sign up at cookieyes.com and add cunning-ai.com
-            2. In Settings → Integrations → Google Consent Mode, enable v2
-            3. Copy your script URL and paste it into the src below
-        */}
+        {/* Cookiebot — loads before GTM and handles Consent Mode v2 */}
         <Script
-          id="cookieyes"
-          src="https://cdn-cookieyes.com/client_data/YOUR_SITE_ID/script.js"
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="5374430c-8946-40a5-8752-4ac5e29200dd"
           strategy="beforeInteractive"
         />
       </head>
